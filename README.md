@@ -25,6 +25,10 @@ Each directory contains projects with their respective HTML, CSS, and other asse
 
 As this is a personal project for refreshing and updating my skills, I am not currently seeking contributions. However, if you find something interesting or have suggestions, feel free to open an issue or a pull request.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## Acknowledgments
 
 I would like to express my gratitude to the open-source community and the creators of the various technologies and tools used in this project. Your work has greatly contributed to the web development ecosystem and allowed developers like me to learn, grow, and create better applications.

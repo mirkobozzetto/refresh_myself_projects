@@ -366,6 +366,7 @@ console.log(doubleObj);
 
 //&_____________________________________________________________________________
 //* 11. Write a function that takes an object as input and returns a new object that contains only properties that have number type values.
+//*! 11. Écrivez une fonction qui prend un objet en entrée et renvoie un nouvel objet contenant uniquement des propriétés dont les valeurs sont de type numérique.
 
 //^ Example :
 

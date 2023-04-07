@@ -76,4 +76,3 @@ N'hésitez pas à explorer le dépôt et à vous inspirer pour rafraîchir et me
 
 Ce fichier `README.md` fournit une description claire de votre projet, de sa structure, de ses objectifs et d'autres informations pertinentes. Vous pouvez l'utiliser comme point de départ et l'éditer si nécessaire pour mieux répondre à vos besoins.
 
-Traduit avec www.DeepL.com/Translator (version gratuite)

@@ -4,7 +4,7 @@ const filtrerArticlesParCategorie = (articles, categorie) =>
 /* 
 Voici une explication détaillée de cette fonction :
 
-const filtrerArticlesParCategorie = (articles, categorie) => ... : Ceci est la déclaration de la fonction fléchée filtrerArticlesParCategorie, qui prend deux arguments, articles et categorie. La fonction utilise ces arguments pour filtrer le tableau d'objets articles en fonction de la categorie spécifiée.
+//* const filtrerArticlesParCategorie = (articles, categorie) => ... : Ceci est la déclaration de la fonction fléchée filtrerArticlesParCategorie, qui prend deux arguments, articles et categorie. La fonction utilise ces arguments pour filtrer le tableau d'objets articles en fonction de la categorie spécifiée.
 
 articles.filter((article) => article.categorie === categorie) : La méthode Array.prototype.filter() est appelée sur le tableau articles. La fonction filter() crée un nouveau tableau avec tous les éléments du tableau d'origine qui passent le test implémenté par la fonction fournie. Dans cet exemple, nous fournissons une fonction fléchée en tant que fonction de test.
 
@@ -69,3 +69,30 @@ console.log("Personnes triées par âge :");
 console.log(personnesTrieParAge);
 console.log("Personnes triées par nom :");
 console.log(personnesTrieParNom);
+
+//&_____________________________________________________________________________
+
+const grouperParPropriete = (array, propriete) =>
+  array.reduce((acc, item) => {
+    const cle = item[propriete];
+    if (!acc[cle]) {
+      acc[cle] = [];
+    }
+    acc[cle].push(item);
+    return acc;
+  }, {});
+
+/* 
+Dans cet exemple, nous avons une fonction grouperParPropriete qui prend un tableau et une propriété en entrée et renvoie un objet contenant des groupes d'éléments en fonction de cette propriété. Nous avons utilisé la fonction fléchée pour définir la fonction et avons également utilisé la fonction Array.prototype.reduce() pour créer l'objet groupé.
+*/
+
+const transactions = [
+  { id: 1, montant: 100, categorie: "Nourriture" },
+  { id: 2, montant: 200, categorie: "Voyage" },
+  { id: 3, montant: 50, categorie: "Nourriture" },
+  { id: 4, montant: 400, categorie: "Voyage" },
+];
+const transactionsGroupees = grouperParPropriete(transactions, "categorie");
+console.log(transactionsGroupees);
+
+//&_____________________________________________________________________________

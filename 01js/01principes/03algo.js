@@ -242,10 +242,8 @@ const calculerNombreDeJours = (date1, date2) => {
   const msParJour = 1000 * 60 * 60 * 24;
   const d1 = new Date(date1);
   const d2 = new Date(date2);
-
   const diffMs = Math.abs(d1 - d2);
   const diffJours = Math.round(diffMs / msParJour);
-
   return diffJours;
 };
 const date1 = "2023-04-10";
@@ -255,4 +253,175 @@ console.log(`Il y a ${nombreDeJours} jours entre le ${date1} et le ${date2}.`);
 
 /*
 Dans cet exemple, nous avons une fonction calculerNombreDeJours qui prend deux dates en entrée et renvoie le nombre de jours entre ces deux dates. Cette fonction peut être utile dans un contexte de développement front-end pour manipuler et afficher des informations basées sur des dates.
+*/
+
+//&_____________________________________________________________________________
+
+const produits = [
+  { id: 1, nom: "Produit A", categorie: "Electronique", prix: 200 },
+  { id: 2, nom: "Produit B", categorie: "Electronique", prix: 300 },
+  { id: 3, nom: "Produit C", categorie: "Maison", prix: 50 },
+  { id: 4, nom: "Produit D", categorie: "Maison", prix: 100 },
+  { id: 5, nom: "Produit E", categorie: "Electronique", prix: 150 },
+];
+const filtrerEtTrierProduits = (produits, categorie, ordre = "asc") => {
+  return produits
+    .filter((produit) => produit.categorie === categorie)
+    .sort((a, b) => (ordre === "asc" ? a.prix - b.prix : b.prix - a.prix));
+};
+const produitsElectroniqueTries = filtrerEtTrierProduits(
+  produits,
+  "Electronique",
+  "desc"
+);
+console.log("Produits électroniques triés par prix décroissant :");
+produitsElectroniqueTries.forEach((produit) =>
+  console.log(
+    `${produit.nom} - Catégorie : ${produit.categorie} - Prix : ${produit.prix}€`
+  )
+);
+
+/*
+Dans cet exemple, nous avons un tableau produits contenant des objets représentant des produits avec leur id, nom, catégorie et prix. Nous avons également une fonction filtrerEtTrierProduits qui prend en entrée un tableau de produits, une catégorie et un ordre de tri, puis renvoie un nouveau tableau filtré et trié en fonction de ces critères.
+
+La fonction filtrerEtTrierProduits utilise les méthodes Array.prototype.filter() et Array.prototype.sort() pour filtrer et trier les produits. Ces deux méthodes sont concaténées pour créer une chaîne d'opérations sur le tableau.
+*/
+
+//&_____________________________________________________________________________
+
+const etudiants = [
+  { id: 1, nom: "Alice", classe: "A", note: 85 },
+  { id: 2, nom: "Bob", classe: "B", note: 90 },
+  { id: 3, nom: "Charlie", classe: "A", note: 82 },
+  { id: 4, nom: "David", classe: "C", note: 95 },
+  { id: 5, nom: "Eva", classe: "B", note: 88 },
+];
+
+const regrouperEtudiantsParClasse = (etudiants) => {
+  return etudiants.reduce((groupes, etudiant) => {
+    if (!groupes[etudiant.classe]) {
+      groupes[etudiant.classe] = [];
+    }
+    groupes[etudiant.classe].push(etudiant);
+    return groupes;
+  }, {});
+};
+const calculerMoyenneDesNotes = (etudiants) => {
+  const total = etudiants.reduce((somme, etudiant) => somme + etudiant.note, 0);
+  return total / etudiants.length;
+};
+const etudiantsParClasse = regrouperEtudiantsParClasse(etudiants);
+const moyennesParClasse = {};
+for (const classe in etudiantsParClasse) {
+  moyennesParClasse[classe] = calculerMoyenneDesNotes(
+    etudiantsParClasse[classe]
+  );
+}
+console.log("Moyennes des notes par classe :");
+for (const classe in moyennesParClasse) {
+  console.log(`Classe ${classe} : ${moyennesParClasse[classe].toFixed(2)}%`);
+}
+
+/*
+  Dans cet exemple, nous avons un tableau etudiants contenant des objets représentant des étudiants avec leur id, nom, classe et note. Nous avons deux fonctions, regrouperEtudiantsParClasse et calculerMoyenneDesNotes. La première fonction regroupe les étudiants par classe en utilisant la méthode Array.prototype.reduce(). La deuxième fonction calcule la moyenne des notes d'un tableau d'étudiants en utilisant également la méthode reduce().
+  
+  Après avoir regroupé les étudiants par classe et calculé la moyenne des notes pour chaque classe, les résultats sont stockés dans un objet moyennesParClasse.
+  */
+
+//&_____________________________________________________________________________
+
+const structureFichiers = {
+  nom: "Dossier Racine",
+  type: "dossier",
+  enfants: [
+    {
+      nom: "Dossier A",
+      type: "dossier",
+      enfants: [
+        { nom: "Fichier A1.txt", type: "fichier" },
+        { nom: "Fichier A2.txt", type: "fichier" },
+      ],
+    },
+    { nom: "Fichier 1.txt", type: "fichier" },
+    {
+      nom: "Dossier B",
+      type: "dossier",
+      enfants: [
+        { nom: "Fichier B1.txt", type: "fichier" },
+        {
+          nom: "Dossier B2",
+          type: "dossier",
+          enfants: [
+            { nom: "Fichier B2-1.txt", type: "fichier" },
+            { nom: "Fichier B2-2.txt", type: "fichier" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+const afficherArbre = (element, indentation = "") => {
+  console.log(indentation + element.nom);
+
+  if (element.type === "dossier" && element.enfants) {
+    const nouvelleIndentation = indentation + "  ";
+    element.enfants.forEach((enfant) =>
+      afficherArbre(enfant, nouvelleIndentation)
+    );
+  }
+};
+afficherArbre(structureFichiers);
+
+/*
+Dans cet exemple, nous avons un objet structureFichiers représentant une structure hiérarchique de dossiers et de fichiers. Nous avons également une fonction récursive afficherArbre qui prend en entrée un élément de la structure et une chaîne d'indentation pour afficher la structure sous forme d'arbre.
+
+La fonction afficherArbre vérifie si l'élément est de type "dossier" et s'il a des enfants. Si c'est le cas, elle appelle récursivement la fonction afficherArbre pour chaque enfant avec une nouvelle indentation.
+*/
+
+//&_____________________________________________________________________________
+
+const inventaire = {
+  electronique: {
+    ordinateurs: [
+      { nom: "Ordinateur A", prix: 1000 },
+      { nom: "Ordinateur B", prix: 1200 },
+    ],
+    smartphones: [
+      { nom: "Smartphone A", prix: 700 },
+      { nom: "Smartphone B", prix: 800 },
+    ],
+  },
+  vetements: {
+    hommes: [
+      { nom: "T-shirt A", prix: 20 },
+      { nom: "Pantalon A", prix: 40 },
+    ],
+    femmes: [
+      { nom: "Robe A", prix: 50 },
+      { nom: "Jupe A", prix: 30 },
+    ],
+  },
+};
+const appliquerRemise = (objet, remise) => {
+  if (Array.isArray(objet)) {
+    objet.forEach((item) => appliquerRemise(item, remise));
+  } else if (typeof objet === "object") {
+    Object.keys(objet).forEach((cle) => {
+      if (cle === "prix") {
+        objet.prix -= (objet.prix * remise) / 100;
+      } else {
+        appliquerRemise(objet[cle], remise);
+      }
+    });
+  }
+};
+const remise = 10;
+appliquerRemise(inventaire, remise);
+console.log("Inventaire après application de la remise :");
+console.log(JSON.stringify(inventaire, null, 2));
+
+/*
+Dans cet exemple, nous avons un objet inventaire contenant des données imbriquées représentant différents produits et leurs prix. Nous avons également une fonction récursive appliquerRemise qui prend en entrée un objet et un pourcentage de remise, puis met à jour tous les prix de l'objet en appliquant la remise.
+
+La fonction appliquerRemise utilise la méthode Object.keys() pour parcourir les clés de l'objet et vérifier si l'une d'elles est "prix". Si c'est le cas, elle met à jour le prix avec la remise. Sinon, elle appelle récursivement la fonction appliquerRemise pour chaque clé imbriquée.
 */

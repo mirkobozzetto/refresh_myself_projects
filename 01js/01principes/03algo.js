@@ -4,7 +4,7 @@ const filtrerArticlesParCategorie = (articles, categorie) =>
 /* 
 Voici une explication détaillée de cette fonction :
 
-//* const filtrerArticlesParCategorie = (articles, categorie) => ... : Ceci est la déclaration de la fonction fléchée filtrerArticlesParCategorie, qui prend deux arguments, articles et categorie. La fonction utilise ces arguments pour filtrer le tableau d'objets articles en fonction de la categorie spécifiée.
+const filtrerArticlesParCategorie = (articles, categorie) => ... : Ceci est la déclaration de la fonction fléchée filtrerArticlesParCategorie, qui prend deux arguments, articles et categorie. La fonction utilise ces arguments pour filtrer le tableau d'objets articles en fonction de la categorie spécifiée.
 
 articles.filter((article) => article.categorie === categorie) : La méthode Array.prototype.filter() est appelée sur le tableau articles. La fonction filter() crée un nouveau tableau avec tous les éléments du tableau d'origine qui passent le test implémenté par la fonction fournie. Dans cet exemple, nous fournissons une fonction fléchée en tant que fonction de test.
 
@@ -96,3 +96,163 @@ const transactionsGroupees = grouperParPropriete(transactions, "categorie");
 console.log(transactionsGroupees);
 
 //&_____________________________________________________________________________
+
+class Person {
+  constructor(nom, dateNaissance) {
+    this.nom = nom;
+    this.dateNaissance = new Date(dateNaissance);
+  }
+
+  calculerAge() {
+    const aujourdHui = new Date();
+    const diff = aujourdHui - this.dateNaissance;
+    const age = new Date(diff);
+    return Math.abs(age.getUTCFullYear() - 1970);
+  }
+}
+
+const personne = new Person("Alice", "1990-01-01");
+
+console.log(`${personne.nom} a ${personne.calculerAge()} ans.`);
+
+/* 
+Dans cet exemple, nous avons créé une classe Person avec un constructeur qui prend nom et dateNaissance comme arguments. La méthode calculerAge() est ajoutée à la classe pour calculer l'âge d'une personne en fonction de sa date de naissance.
+
+Voici une explication détaillée de cette classe et de la méthode calculerAge() :
+
+class Person { ... } : Ceci est la déclaration de la classe Person. Une classe est un modèle pour créer des objets en JavaScript. Les classes ont des méthodes et des propriétés.
+
+constructor(nom, dateNaissance) { ... } : Ceci est le constructeur de la classe Person, qui est appelé lorsqu'un nouvel objet Person est créé. Le constructeur prend deux arguments, nom et dateNaissance, et initialise les propriétés de l'objet avec ces valeurs.
+
+calculerAge() { ... } : Ceci est une méthode de la classe Person qui calcule l'âge d'une personne en fonction de sa date de naissance. La méthode soustrait la date de naissance de la date actuelle pour obtenir la différence en millisecondes, puis convertit cette différence en années.
+
+const personne = new Person("Alice", "1990-01-01"); : Ceci crée un nouvel objet Person avec le nom "Alice" et la date de naissance "1990-01-01".
+
+console.log(${personne.nom} a ${personne.calculerAge()} ans.); : Ceci appelle la méthode calculerAge() sur l'objet personne et affiche l'âge calculé dans la console.
+*/
+
+//&_____________________________________________________________________________
+
+class CompteBancaire {
+  constructor(numero, solde = 0) {
+    this.numero = numero;
+    this.solde = solde;
+  }
+  deposer(montant) {
+    this.solde += montant;
+  }
+  retirer(montant) {
+    if (montant > this.solde) {
+      console.log("Fonds insuffisants !");
+      return;
+    }
+    this.solde -= montant;
+  }
+  afficherSolde() {
+    console.log(`Le solde du compte ${this.numero} est de ${this.solde}€.`);
+  }
+}
+class Banque {
+  constructor() {
+    this.comptes = [];
+  }
+  ajouterCompte(compte) {
+    this.comptes.push(compte);
+  }
+  transferer(srcNumero, destNumero, montant) {
+    const srcCompte = this.comptes.find(
+      (compte) => compte.numero === srcNumero
+    );
+    const destCompte = this.comptes.find(
+      (compte) => compte.numero === destNumero
+    );
+    if (!srcCompte || !destCompte) {
+      console.log("Compte introuvable !");
+      return;
+    }
+    srcCompte.retirer(montant);
+    destCompte.deposer(montant);
+  }
+}
+const banque = new Banque();
+const compte1 = new CompteBancaire("001", 1000);
+const compte2 = new CompteBancaire("002", 500);
+banque.ajouterCompte(compte1);
+banque.ajouterCompte(compte2);
+banque.transferer("001", "002", 200);
+compte1.afficherSolde();
+compte2.afficherSolde();
+
+/* 
+Dans cet exemple, nous avons deux classes, CompteBancaire et Banque. La classe CompteBancaire représente un compte bancaire individuel avec des méthodes pour déposer, retirer et afficher le solde. La classe Banque gère un ensemble de comptes bancaires et fournit une méthode pour effectuer des transferts entre les comptes.
+*/
+
+//&_____________________________________________________________________________
+
+class Tache {
+  constructor(description, dateLimite) {
+    this.description = description;
+    this.dateLimite = new Date(dateLimite);
+    this.terminee = false;
+  }
+  marquerCommeTerminee() {
+    this.terminee = true;
+  }
+}
+class GestionnaireTaches {
+  constructor() {
+    this.taches = [];
+  }
+  ajouterTache(tache) {
+    this.taches.push(tache);
+  }
+  supprimerTache(description) {
+    this.taches = this.taches.filter(
+      (tache) => tache.description !== description
+    );
+  }
+  afficherTaches() {
+    this.taches.forEach((tache) => {
+      console.log(
+        `${
+          tache.description
+        } - Date limite : ${tache.dateLimite.toLocaleDateString()} - ${
+          tache.terminee ? "Terminée" : "En cours"
+        }`
+      );
+    });
+  }
+}
+const gestionnaire = new GestionnaireTaches();
+const tache1 = new Tache("Acheter du lait", "2023-04-15");
+const tache2 = new Tache("Payer les factures", "2023-04-20");
+gestionnaire.ajouterTache(tache1);
+gestionnaire.ajouterTache(tache2);
+gestionnaire.afficherTaches();
+tache1.marquerCommeTerminee();
+console.log("\nAprès avoir marqué la première tâche comme terminée :\n");
+gestionnaire.afficherTaches();
+
+/*
+    Dans cet exemple, nous avons deux classes, Tache et GestionnaireTaches. La classe Tache représente une tâche individuelle avec une description, une date limite et un état (terminée ou non). La classe GestionnaireTaches gère un ensemble de tâches et fournit des méthodes pour ajouter, supprimer et afficher les tâches.
+    */
+//&_____________________________________________________________________________
+
+const calculerNombreDeJours = (date1, date2) => {
+  const msParJour = 1000 * 60 * 60 * 24;
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
+
+  const diffMs = Math.abs(d1 - d2);
+  const diffJours = Math.round(diffMs / msParJour);
+
+  return diffJours;
+};
+const date1 = "2023-04-10";
+const date2 = "2023-05-01";
+const nombreDeJours = calculerNombreDeJours(date1, date2);
+console.log(`Il y a ${nombreDeJours} jours entre le ${date1} et le ${date2}.`);
+
+/*
+Dans cet exemple, nous avons une fonction calculerNombreDeJours qui prend deux dates en entrée et renvoie le nombre de jours entre ces deux dates. Cette fonction peut être utile dans un contexte de développement front-end pour manipuler et afficher des informations basées sur des dates.
+*/

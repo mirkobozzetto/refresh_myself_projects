@@ -10,18 +10,21 @@
     />
     <title>Task Manager</title>
   </head>
-  <body class="bg-gray-900 text-white">
-    <header class="text-center pt-10">
+  <body class="bg-gray-900 text-white min-h-screen flex flex-col items-center">
+    <header class="text-center pt-10 w-full">
       <h1 class="text-4xl font-bold mb-5">Task List</h1>
       <form id="new-task-form" class="flex justify-center">
-        <label for="new-task-input" class="visually-hidden">New task:</label>
-        <input
-          type="text"
-          id="new-task-input"
-          placeholder="What do you have planned"
-          required
-          class="w-full max-w-md px-4 py-2 bg-gray-700 bg-opacity-40 rounded shadow text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
-        />
+        <div class="flex items-center">
+          <label for="new-task-input" class="visually-hidden">New task:</label>
+          <input
+            type="text"
+            id="new-task-input"
+            placeholder="What do you have planned"
+            required
+            class="w-full max-w-md px-4 py-2 bg-gray-700 bg-opacity-40 rounded shadow text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+        </div>
+
         <input
           type="submit"
           value="Add Task"
@@ -29,54 +32,11 @@
         />
       </form>
     </header>
-    <main class="mt-10">
+    <main class="mt-10 flex-grow w-full">
       <section class="task-list mx-auto w-full max-w-3xl">
         <h2 class="text-2xl font-semibold mb-5">Tasks</h2>
         <div id="tasks">
-          <div class="task mb-4 p-4 bg-gray-700 bg-opacity-40 rounded shadow">
-            <label for="task1" class="visually-hidden">Task 1:</label>
-            <input
-              type="text"
-              class="text w-full mb-2 bg-transparent focus:outline-none"
-              id="task1"
-              value="First example task"
-              readonly
-            />
-            <div class="actions flex justify-end">
-              <button
-                class="edit px-4 py-1 bg-purple-500 rounded mr-2 hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              >
-                Edit
-              </button>
-              <button
-                class="delete px-4 py-1 bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-          <div class="task mb-4 p-4 bg-gray-700 bg-opacity-40 rounded shadow">
-            <label for="task2" class="visually-hidden">Task 2:</label>
-            <input
-              type="text"
-              class="text w-full mb-2 bg-transparent focus:outline-none"
-              id="task2"
-              value="Second example task"
-              readonly
-            />
-            <div class="actions flex justify-end">
-              <button
-                class="edit px-4 py-1 bg-purple-500 rounded mr-2 hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              >
-                Edit
-              </button>
-              <button
-                class="delete px-4 py-1 bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+          <!--  -->
         </div>
       </section>
     </main>

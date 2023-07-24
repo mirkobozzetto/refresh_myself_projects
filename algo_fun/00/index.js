@@ -45,5 +45,3 @@ const printPattern = (n) => {
     console.log(pattern.reverse().join("").repeat(i));
   }
 };
-
-// aaaaaaaa

@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+node_modules
+package-lock.json
+
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 

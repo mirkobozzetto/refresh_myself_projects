@@ -1,11 +1,13 @@
 //! 1. push()
-// Cette méthode permet d'ajouter un ou plusieurs éléments à la fin d'un tableau et renvoie la nouvelle longueur du tableau.
+//* This method adds one or more elements to the end of an array and returns the new array length.
+//! Cette méthode permet d'ajouter un ou plusieurs éléments à la fin d'un tableau et renvoie la nouvelle longueur du tableau.
 
 const fruits1 = ["pomme", "banane", "mangue"];
 const newLength1 = fruits1.push("orange");
 console.log(fruits1); // Output: ['pomme', 'banane', 'mangue', 'orange']
 console.log(newLength1); // Output: 4
 
+// We reproduce this with a while loop, without using any array method.
 // On reproduit ça avec une boucle while, sans utiliser aucune méthode de tableau.
 const fruits2 = ["pomme", "banane", "mangue"];
 let i = 0;
@@ -16,12 +18,14 @@ while (i < newLength2) {
 fruits2[newLength2] = "orange"; // On ajoute l'orange à la fin du tableau
 console.log(fruits2); // Output: ['pomme', 'banane', 'mangue', 'orange']
 
-//^? La méthode push() est généralement utilisée lorsque tu veux ajouter des éléments à la fin d'un tableau. Par exemple, si tu bosses sur une appli de messagerie instantanée et que tu veux ajouter un nouveau message à la fin de la liste des messages, tu pourrais utiliser push(). Aussi, tu pourrais avoir un tableau qui représente un panier d'achats et tu veux ajouter un nouvel article à la fin du tableau. Dans ce cas, la méthode push() serait aussi un bon choix. C'est un outil super utile pour garder les choses organisées, surtout quand t'as une tonne de données à manipuler.
+//^ The push() method is generally used when you want to add elements to the end of an array. For example, if you're working on an instant messaging application and you want to add a new message to the end of the message list, you could use push(). Or you might have an array representing a shopping cart and want to add a new item to the end of the array. In this case, the push() method would also be a good choice. It's a great tool for keeping things organized, especially when you've got a ton of data to manipulate.
+//? La méthode push() est généralement utilisée lorsque tu veux ajouter des éléments à la fin d'un tableau. Par exemple, si tu bosses sur une appli de messagerie instantanée et que tu veux ajouter un nouveau message à la fin de la liste des messages, tu pourrais utiliser push(). Aussi, tu pourrais avoir un tableau qui représente un panier d'achats et tu veux ajouter un nouvel article à la fin du tableau. Dans ce cas, la méthode push() serait aussi un bon choix. C'est un outil super utile pour garder les choses organisées, surtout quand t'as une tonne de données à manipuler.
 
 //&_____________________________________________________________________________
 
-//! 3. filter()
-// Cette méthode crée un nouveau tableau avec tous les éléments qui passent le test implémenté par la fonction fournie.
+//! 2. filter()
+//* This method creates a new array with all the elements that pass the test implemented by the supplied function.
+//! Cette méthode crée un nouveau tableau avec tous les éléments qui passent le test implémenté par la fonction fournie.
 
 const nombres1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const nombresPairs1 = nombres1.filter((num) => num % 2 === 0);
@@ -37,17 +41,21 @@ for (let i = 0; i < nombres2.length; i++) {
 }
 console.log(nombresPairs2); // Output: [2, 4, 6, 8, 10]
 
-//^? La méthode filter() est vraiment pratique quand tu veux créer un nouveau tableau à partir d'un tableau existant, mais seulement avec certains éléments qui passent un certain test. Par exemple, disons que tu bosses sur une appli de gestion de projets et que tu veux filtrer tous les projets qui sont en retard. Tu pourrais utiliser filter() pour créer un nouveau tableau avec seulement les projets en retard. Ou peut-être que tu veux afficher seulement les utilisateurs qui sont actuellement en ligne dans ton appli de chat. Encore une fois, filter() serait un bon choix. En gros, c'est une méthode vraiment puissante pour travailler avec des données en JS.
+//^ La méthode filter() est vraiment pratique quand tu veux créer un nouveau tableau à partir d'un tableau existant, mais seulement avec certains éléments qui passent un certain test. Par exemple, disons que tu bosses sur une appli de gestion de projets et que tu veux filtrer tous les projets qui sont en retard. Tu pourrais utiliser filter() pour créer un nouveau tableau avec seulement les projets en retard. Ou peut-être que tu veux afficher seulement les utilisateurs qui sont actuellement en ligne dans ton appli de chat. Encore une fois, filter() serait un bon choix. En gros, c'est une méthode vraiment puissante pour travailler avec des données en JS.
+
+//? La méthode filter() est vraiment pratique quand tu veux créer un nouveau tableau à partir d'un tableau existant, mais seulement avec certains éléments qui passent un certain test. Par exemple, disons que tu bosses sur une appli de gestion de projets et que tu veux filtrer tous les projets qui sont en retard. Tu pourrais utiliser filter() pour créer un nouveau tableau avec seulement les projets en retard. Ou peut-être que tu veux afficher seulement les utilisateurs qui sont actuellement en ligne dans ton appli de chat. Encore une fois, filter() serait un bon choix. En gros, c'est une méthode vraiment puissante pour travailler avec des données en JS.
 
 //&_____________________________________________________________________________
 
-//! 4. reduce()
-// Cette méthode applique une fonction qui est un "réducteur" aux éléments de chaque élément du tableau, de gauche à droite, de manière à réduire le tableau à une seule valeur.
+//! 3. reduce()
+//* This method applies a function that is a "reducer" to the elements of each array element, from left to right, so as to reduce the array to a single value.
+//! Cette méthode applique une fonction qui est un "réducteur" aux éléments de chaque élément du tableau, de gauche à droite, de manière à réduire le tableau à une seule valeur.
 
 const nombres1 = [1, 2, 3, 4, 5];
 const somme1 = nombres1.reduce((acc, num) => acc + num, 0);
 console.log(somme1); // Output: 15
 
+// We reproduce this with a while loop, without using any array method.
 // On reproduit ça avec une boucle while, sans utiliser aucune méthode de tableau.
 const nombres2 = [1, 2, 3, 4, 5];
 let somme2 = 0;
@@ -57,6 +65,8 @@ while (i < nombres2.length) {
   i++;
 }
 console.log(somme2); // Output: 15
+
+//^ The reduce() method is really useful when you want to reduce an array to a single value. For example, if you want to calculate the sum of all the numbers in an array, or maybe you want to find the product of all the numbers. You could also use it to flatten an array of arrays into a single array. In short, it's a really powerful and versatile way of working with arrays in JS.
 
 //^? La méthode reduce() est vraiment utile quand tu veux réduire un tableau à une seule valeur. Par exemple, si tu veux calculer la somme de tous les nombres d'un tableau ou peut-être que tu veux trouver le produit de tous les nombres. Tu pourrais aussi l'utiliser pour aplatir un tableau de tableaux en un seul tableau. Bref, c'est une méthode vraiment puissante et polyvalente pour travailler avec des tableaux en JS.
 

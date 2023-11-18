@@ -72,7 +72,7 @@ console.log(somme2); // Output: 15
 
 //&_____________________________________________________________________________
 
-//! 5. find()
+//! 4. find()
 // Cette méthode renvoie la première valeur d'un tableau qui passe un test (fourni en tant que fonction).
 
 const nombres1 = [1, 2, 3, 4, 5];
@@ -94,7 +94,7 @@ console.log(premierNombreSup32); // Output: 4
 
 //&_____________________________________________________________________________
 
-//! 6. some()
+//! 5. some()
 // Cette méthode teste si au moins un élément dans le tableau passe le test implémenté par la fonction fournie.
 
 const nombres1 = [1, 2, 3, 4, 5];
@@ -117,7 +117,7 @@ console.log(aUnNombreSup32); // Output: true
 
 //&_____________________________________________________________________________
 
-//! 7. every()
+//! 6. every()
 // Cette méthode teste si tous les éléments du tableau passent le test implémenté par la fonction fournie.
 
 const nombres1 = [1, 2, 3, 4, 5];
@@ -139,7 +139,7 @@ console.log(tousLesNombresSup02); // Output: true
 
 //&_____________________________________________________________________________
 
-//! 8. includes()
+//! 7. includes()
 // Cette méthode détermine si un tableau contient une certaine valeur parmi ses entrées, en renvoyant true ou false selon le cas.
 
 const fruits1 = ["pomme", "banane", "mangue", "orange"];
@@ -162,7 +162,7 @@ console.log(contientOrange2); // Output: true
 
 //&_____________________________________________________________________________
 
-//! 9. findIndex()
+//! 8. findIndex()
 // Cette méthode renvoie l'indice du premier élément du tableau qui satisfait la fonction de test fournie. Sinon, elle renvoie -1.
 
 const nombres1 = [1, 2, 3, 4, 5];
@@ -184,7 +184,7 @@ console.log(indexPremierNombreSup32); // Output: 3
 
 //&_____________________________________________________________________________
 
-//! 10. concat()
+//! 9. concat()
 // Cette méthode fusionne deux ou plusieurs tableaux en renvoyant un nouveau tableau.
 
 const fruits1 = ["pomme", "banane"];
@@ -208,7 +208,7 @@ console.log(fruitsEtLegumes2); // Output: ['pomme', 'banane', 'carotte', 'brocol
 
 //&_____________________________________________________________________________
 
-//! 11. slice()
+//! 10. slice()
 // Cette méthode renvoie une copie superficielle d'une portion du tableau dans un nouvel objet tableau.
 
 const fruits1 = ["pomme", "banane", "orange", "mangue", "kiwi"];
